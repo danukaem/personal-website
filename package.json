@@ -7,8 +7,18 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "browser-sync": "^2.26.3"
-  }
+    "browser-sync": "^2.26.3",
+    "git": "^0.1.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danukaem/personal-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danukaem/personal-website/issues"
+  },
+  "homepage": "https://github.com/danukaem/personal-website#readme",
+  "description": ""
 }
