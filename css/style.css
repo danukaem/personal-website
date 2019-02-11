@@ -72,8 +72,10 @@ figure {
   width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: rgb(230, 170, 42);
+  /* background-color: rgb(45, 152, 156); */
+  background-color: transparent;
  }
+
 
 #colorlib-aside {
   padding-top: 3em;
@@ -83,7 +85,9 @@ figure {
   position: fixed;
   overflow-y: scroll;
   z-index: 1001;
-  background: rgb(230, 170, 42);
+  background: rgb(95, 95, 95);
+  /* background-color: transparent; */
+
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
@@ -121,7 +125,8 @@ figure {
       display: block;
       text-align: center;
       color: #000;
-      padding-right: .3em; }
+      padding-right: .3em;
+     }
   #colorlib-aside #colorlib-main-menu {
     display: block;
     width: 100%; }
@@ -220,7 +225,7 @@ figure {
 
 .container-wrap {
   max-width: 1170px;
-  margin: 0 auto; }
+  margin: 0 0; }
 
 #colorlib-main {
   width: calc(100% - 300px);
@@ -231,14 +236,14 @@ figure {
   @media screen and (max-width: 768px) {
     #colorlib-main {
       width: 100%;
-      padding: 0 1em; } }
+      padding: 0 0; } }
 
 #colorlib-hero {
   min-height: 500px;
   background: #fff url(../images/loader.gif) no-repeat center center;
   width: 100%;
   float: left;
-  margin-bottom: 10em;
+  /* margin-bottom: 10em; */
   clear: both; }
   #colorlib-hero .flexslider {
     border: none;
@@ -384,7 +389,7 @@ body.offcanvas {
 .colorlib-services,
 .colorlib-contact {
   padding-top: 4em;
-  padding-bottom: 9em;
+  /* padding-bottom: 9em; */
   clear: both;
   width: 100%;
   display: block; }
@@ -491,6 +496,10 @@ body.offcanvas {
   top: 50%;
   line-height: 1;
   margin-top: -7px; }
+
+  .hiOne,.hiTwo{
+    color: rgb(238, 177, 63) !important;
+  }
 
 .panel-heading a.collapsed:after {
   content: "\e114"; }
