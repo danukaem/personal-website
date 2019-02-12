@@ -1536,6 +1536,11 @@
 .icon-twitter2:before {
   content: "\eac6";
 }
+
+
+
+
+
 .icon-vine:before {
   content: "\eac7";
 }
@@ -1689,6 +1694,11 @@
 .icon-linkedin2:before {
   content: "\eaf9";
 }
+
+.fa-github-alt:before {
+  content: "\eaf9";
+}
+
 .icon-linkedin22:before {
   content: "\eafa";
 }
