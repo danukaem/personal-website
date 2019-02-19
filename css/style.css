@@ -1463,7 +1463,7 @@ body.offcanvas {
   } */
 
 
-  .badge-success {
+  /* .badge-success {
     color: #fff;
     background-color: #28a745;
 }
@@ -1478,6 +1478,10 @@ body.offcanvas {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25rem;
+} */
+
+@media screen and (max-width: 768px){
+#colorlib-aside{
+  background: rgb(25, 3, 85)!important;
 }
-
-
+}
