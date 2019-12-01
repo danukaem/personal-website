@@ -1485,3 +1485,6 @@ body.offcanvas {
   background: rgb(25, 3, 85)!important;
 }
 }
+.set-height-div{
+  height: 220px;
+}
