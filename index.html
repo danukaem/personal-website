@@ -1,1410 +1,631 @@
-<!DOCTYPE HTML>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>DANUKA ERANDA </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content=""/>
-    <meta name="keywords" content="danuka eranda malawana"/>
-    <meta name="author" content=""/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Danuka Malawana — Full Stack Developer</title>
+<meta name="description" content="Danuka Malawana — Full Stack Developer in Sri Lanka. Java, Spring Boot, React and Angular. BSc (Hons) Engineering, University of Moratuwa.">
+<meta name="author" content="Danuka Malawana">
+<meta name="theme-color" content="#08090b">
+<link rel="canonical" href="https://danukaem.github.io/personal-website/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Danuka Malawana — Full Stack Developer">
+<meta property="og:description" content="Java, Spring Boot, React and Angular. Full stack developer based in Sri Lanka.">
+<meta property="og:url" content="https://danukaem.github.io/personal-website/">
+<meta property="og:image" content="https://danukaem.github.io/personal-website/assets/danuka.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2308090b'/><text x='50' y='68' font-size='54' font-family='system-ui,sans-serif' font-weight='700' fill='%2334d399' text-anchor='middle'>D</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08090b; --bg-2:#0d0f13; --surface:#111318; --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.16);
+  --text:#e8eaed; --muted:#9aa1ab; --dim:#6b727d;
+  --accent:#34d399; --accent-soft:rgba(52,211,153,.12);
+  --radius:16px; --max:1120px;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{line-height:1.15;margin:0;letter-spacing:-.02em;font-weight:700}
+p{margin:0 0 1rem}
+::selection{background:var(--accent);color:#04120c}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 14px;display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--accent);opacity:.6}
+section{padding:110px 0;position:relative}
+section > .wrap > h2{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:14px}
+.lede{color:var(--muted);max-width:64ch;font-size:1.02rem}
 
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content=""/>
-    <meta property="og:image" content=""/>
-    <meta property="og:url" content=""/>
-    <meta property="og:site_name" content=""/>
-    <meta property="og:description" content=""/>
-    <meta name="twitter:title" content=""/>
-    <meta name="twitter:image" content=""/>
-    <meta name="twitter:url" content=""/>
-    <meta name="twitter:card" content=""/>
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s;
+  border-bottom:1px solid transparent;
+}
+header.stuck{background:rgba(8,9,11,.72);backdrop-filter:blur(14px) saturate(150%);border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{font-weight:800;letter-spacing:-.03em;font-size:1.05rem}
+.brand span{color:var(--accent)}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{
+  font-size:.9rem;color:var(--muted);padding:8px 14px;border-radius:99px;
+  transition:color .2s,background .2s;
+}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.nav-links a.active{color:var(--accent);background:var(--accent-soft)}
+.nav-cta{
+  border:1px solid var(--line-strong);border-radius:99px;padding:9px 18px;font-size:.88rem;
+  font-weight:500;transition:.2s;margin-left:8px;
+}
+.nav-cta:hover{border-color:var(--accent);color:var(--accent)}
+.burger{display:none;background:none;border:0;padding:10px;cursor:pointer}
+.burger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;transition:.25s;border-radius:2px}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="favicon.ico">
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;display:flex;align-items:center;padding:108px 0 72px;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    radial-gradient(700px 420px at 78% 18%,rgba(52,211,153,.14),transparent 65%),
+    radial-gradient(620px 380px at 12% 78%,rgba(99,102,241,.12),transparent 68%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 72%);
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 72%);
+  opacity:.5;
+}
+.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:64px;align-items:center;width:100%}
+.status{
+  display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.76rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:99px;padding:7px 15px;margin-bottom:26px;
+  background:rgba(255,255,255,.02);
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.hero h1{font-size:clamp(2.5rem,6.4vw,4.15rem);font-weight:800;letter-spacing:-.045em}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),#6ee7d3 40%,#818cf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .role{font-size:clamp(1.02rem,2.1vw,1.3rem);color:var(--text);margin:16px 0 8px;font-weight:500;max-width:30ch}
+.hero .role b{color:var(--accent);font-weight:600}
+.hero p.bio{color:var(--muted);max-width:52ch;margin-top:14px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:99px;
+  font-weight:600;font-size:.95rem;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;
+  border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#04120c;box-shadow:0 8px 30px -10px rgba(52,211,153,.6)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 38px -10px rgba(52,211,153,.75)}
+.btn-ghost{border-color:var(--line-strong);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.portrait{position:relative;justify-self:center}
+.portrait img{
+  width:min(330px,70vw);height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center 18%;
+  border-radius:22px;border:1px solid var(--line-strong);filter:grayscale(.12) contrast(1.03);
+}
+.portrait::after{
+  content:"";position:absolute;inset:-18px;border-radius:32px;z-index:-1;
+  background:linear-gradient(140deg,rgba(52,211,153,.35),rgba(129,140,248,.22));filter:blur(34px);
+}
+.hero-meta{display:flex;gap:26px 40px;flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
+.hero-meta div{display:flex;flex-direction:column}
+.hero-meta dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.hero-meta dd{margin:4px 0 0;font-size:.95rem;font-weight:500}
 
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:36px}
+.about-grid p{color:var(--muted)}
+.facts{display:grid;gap:14px}
+.fact{
+  border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;background:var(--surface);
+  transition:border-color .25s,transform .25s;
+}
+.fact:hover{border-color:var(--line-strong);transform:translateY(-2px)}
+.fact h4{font-size:.98rem;margin-bottom:4px}
+.fact p{margin:0;font-size:.9rem;color:var(--muted)}
+.fact .ico{color:var(--accent);font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;display:block;margin-bottom:8px}
 
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
-    <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <!-- Flexslider  -->
-    <link rel="stylesheet" href="css/flexslider.css">
-    <!-- Flaticons  -->
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <!-- Owl Carousel -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <!-- Theme style  -->
-    <link rel="stylesheet" href="css/style.css">
+/* ---------- skills ---------- */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:44px}
+.skill-card{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:var(--surface);transition:border-color .25s,transform .25s}
+.skill-card:hover{border-color:rgba(52,211,153,.35);transform:translateY(-3px)}
+.skill-card h3{font-size:.82rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  font-size:.83rem;color:var(--muted);border:1px solid var(--line);border-radius:8px;
+  padding:5px 11px;background:rgba(255,255,255,.02);transition:.2s;
+}
+.skill-card:hover .tag{border-color:var(--line-strong);color:var(--text)}
 
-    <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
-    <!-- FOR IE9 below -->
-    <!--[if lt IE 9]>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <!-- Font Awesome -->
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <!-- Skill Progress Bar -->
-    <link href="css/pro-bars.css" rel="stylesheet" type="text/css" media="all"/>
-    <!-- Owl Carousel -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <!-- Default Theme CSS File-->
-    <link id="switcher" href="css/themes/default-theme.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+/* ---------- timeline ---------- */
+.timeline{margin-top:48px;position:relative;padding-left:28px}
+.timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--accent),var(--line) 30%,var(--line))}
+.tl-item{position:relative;padding:0 0 40px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;left:-28px;top:7px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--line-strong);transition:.25s;
+}
+.tl-item.now::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
+.tl-date{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--accent);margin-bottom:6px}
+.tl-item h3{font-size:1.12rem;margin-bottom:4px}
+.tl-org{color:var(--muted);font-size:.95rem}
+.tl-note{color:var(--dim);font-size:.88rem;margin-top:6px}
 
+/* ---------- projects ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px}
+.filter{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--muted);
+  border:1px solid var(--line);background:transparent;border-radius:99px;padding:8px 16px;cursor:pointer;transition:.2s;
+}
+.filter:hover{color:var(--text);border-color:var(--line-strong)}
+.filter.active{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-top:26px}
+.proj{
+  border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:var(--surface);
+  display:flex;flex-direction:column;position:relative;overflow:hidden;
+  transition:border-color .25s,transform .25s,background .25s;
+}
+.proj::after{
+  content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;
+  background:radial-gradient(340px 180px at var(--mx,50%) var(--my,0%),rgba(52,211,153,.09),transparent 70%);
+}
+.proj:hover{border-color:rgba(52,211,153,.4);transform:translateY(-4px)}
+.proj:hover::after{opacity:1}
+.proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.proj-kind{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.proj-num{font-family:var(--mono);font-size:.7rem;color:var(--dim)}
+.proj h3{font-size:1.1rem;margin-bottom:10px}
+.proj p{font-size:.9rem;color:var(--muted);margin-bottom:18px;flex:1}
+.proj .tags{margin-top:auto}
+.proj .tag{font-size:.74rem;padding:4px 9px}
 
+/* ---------- education ---------- */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:18px;margin-top:44px;align-items:start}
+.edu{border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:var(--surface);transition:.25s}
+.edu:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.edu .tl-date{margin-bottom:10px}
+.edu h3{font-size:1.05rem;margin-bottom:6px}
+.edu p{color:var(--muted);font-size:.92rem;margin:0}
+.edu ul{margin:12px 0 0;padding-left:18px;color:var(--dim);font-size:.86rem}
+
+/* ---------- contact ---------- */
+#contact{padding-bottom:90px}
+.contact-box{
+  border:1px solid var(--line);border-radius:26px;padding:clamp(32px,5vw,64px);margin-top:36px;
+  background:linear-gradient(160deg,var(--surface),rgba(52,211,153,.05));position:relative;overflow:hidden;
+}
+.contact-box h2{font-size:clamp(1.8rem,4.4vw,2.8rem);margin-bottom:14px}
+.contact-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:34px}
+.clink{
+  display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:14px;
+  padding:16px 18px;background:rgba(8,9,11,.5);transition:.22s;
+}
+.clink:hover{border-color:var(--accent);transform:translateY(-2px);background:rgba(52,211,153,.06)}
+.clink svg{width:19px;height:19px;stroke:var(--accent);flex:none}
+.clink small{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.clink span{font-size:.93rem;font-weight:500;word-break:break-all}
+
+footer{border-top:1px solid var(--line);padding:30px 0}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--dim);font-size:.85rem}
+.foot a:hover{color:var(--accent)}
+.top{position:fixed;right:22px;bottom:22px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  background:var(--surface);border:1px solid var(--line-strong);color:var(--muted);opacity:0;pointer-events:none;transition:.3s;z-index:50}
+.top.show{opacity:1;pointer-events:auto}
+.top:hover{color:var(--accent);border-color:var(--accent)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .portrait{order:-1;justify-self:start}
+  .portrait img{width:min(200px,52vw)}
+  .about-grid{grid-template-columns:1fr;gap:34px}
+  section{padding:80px 0}
+  .nav-links{
+    position:fixed;inset:70px 0 auto;flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(8,9,11,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);
+    padding:12px 24px 22px;transform:translateY(-130%);transition:transform .32s cubic-bezier(.2,.7,.3,1);
+  }
+  .nav-links.open{transform:none}
+  .nav-links a{padding:14px 4px;border-radius:0;border-bottom:1px solid var(--line)}
+  .nav-links a.active{background:none}
+  .nav-cta{margin:16px 0 0;text-align:center;border-bottom:0!important}
+  .burger{display:block}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
-
 <body>
-<div id="colorlib-page" class="container">
-    <div class="container-wrap">
-        <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar"
-           aria-expanded="false" aria-controls="navbar"><i></i></a>
-        <aside id="colorlib-aside" role="complementary" class="border js-fullheight">
-            <div class="text-center">
-                <div class="author-img" style="background-image: url(images/about.JPG);"></div>
-                <h1 id="colorlib-logo"><a href="index.html" style="color: white ;">DANUKA MALAWANA</a></h1>
-                <span class="position" style="color: white !important;"><a href="#">Full Stack Developer</a> <br> in Sri Lanka</span>
-            </div>
-            <nav id="colorlib-main-menu" role="navigation" class="navbar">
-                <div id="navbar" class="collapse">
-                    <ul>
-                        <li class="active"><a href="#" data-nav-section="home" style="color: white ;">Home</a></li>
-                        <li><a href="#" data-nav-section="about" style="color: white ;">About</a></li>
-                        <li><a href="#" data-nav-section="services" style="color: white ;">Services</a></li>
-                        <li><a href="#" data-nav-section="skills" style="color: white ;">Skills</a></li>
-                        <li><a href="#" data-nav-section="education" style="color: white ;">Education</a></li>
-                        <li><a href="#" data-nav-section="experience" style="color: white ;">Experience</a></li>
-                        <li><a href="#" data-nav-section="work" style="color: white ;">Work</a></li>
-                        <!-- <li><a href="#" data-nav-section="blog" style="color: white ;">Blog</a></li> -->
-                        <li><a href="#" data-nav-section="contact" style="color: white ;">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
 
-            <div class="colorlib-footer" style="color: white ;">
-                <p>
-                    <small>&copy;
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script>
-                        All rights reserved <a href="https://colorlib.com" target="_blank"></a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </span>
-                        <span>
-								<a href="https://unsplash.com/" target="_blank"></a></span>
-                    </small>
-                </p>
-                <ul>
-                    <li><a href="https://www.facebook.com/danuka.malawana"><i class="icon-facebook2"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter2"></i></a></li>
-                    <li><a href="https://lk.linkedin.com/in/danuka-malawana-075a9376"><i class="icon-linkedin2"></i></a>
-                    </li>
-                    <li><a href="https://github.com/danukaem"><i class="fab fa-github-alt"></i></a></li>
+<header id="site-header">
+  <div class="wrap nav">
+    <a href="#top" class="brand">Danuka<span>.</span></a>
+    <nav class="nav-links" id="menu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-                </ul>
-            </div>
+<main id="top">
 
-        </aside>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="status"><i class="dot"></i> Colombo, Sri Lanka</div>
+        <h1>Danuka <em>Malawana</em></h1>
+        <p class="role">Full Stack Developer — <b>Java</b>, <b>Spring Boot</b>, <b>React</b> &amp; <b>Angular</b>.</p>
+        <p class="bio">Engineer by degree, developer by trade. I build web and desktop applications end to end, from the database and REST layer up to the interface people actually use.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="#projects">View projects</a>
+        </div>
+        <dl class="hero-meta">
+          <div><dt>Focus</dt><dd>Full stack engineering</dd></div>
+          <div><dt>Core stack</dt><dd>Java · Spring Boot · React</dd></div>
+          <div><dt>Education</dt><dd>BSc (Hons) Moratuwa · MSc SLIIT</dd></div>
+        </dl>
+      </div>
+      <div class="portrait">
+        <img src="assets/danuka.jpg" alt="Portrait of Danuka Malawana" width="682" height="720" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="container-fluid" id="colorlib-main">
-            <section id="colorlib-hero" class="js-fullheight" data-section="home">
-                <div class="flexslider js-fullheight">
-                    <ul class="slides">
-                        <li style="background-image: url(img/2.jpg);">
-                            <div class="overlay"></div>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
-                                        <div class="slider-text-inner js-fullheight">
-                                            <div class="desc">
-                                                <h1 class="hiOne">Hi! <br>I'm <br> Danuka</h1>
-                                                <!-- <h2>100% html5 bootstrap templates Made by <a href="https://colorlib.com/" target="_blank">colorlib.com</a></h2> -->
-                                                <!-- <p><a class="btn btn-primary btn-learn">Download CV <i class="icon-download4"></i></a></p> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li style="background-image: url(img/1.jpg);">
-                            <div class="overlay"></div>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
-                                        <div class="slider-text-inner">
-                                            <div class="desc">
-                                                <h1 id="fullstackdev" class="hiTwo">I am <br>a <br> Full <br> Stack <br>
-                                                    Developer</h1>
-                                                <!-- <h2>100% html5 bootstrap templates Made by <a href="https://colorlib.com/" target="_blank">colorlib.com</a></h2> -->
-                                                <!-- <p><a class="btn btn-primary btn-learn">View Portfolio <i class="icon-briefcase3"></i></a></p> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+<section id="about">
+  <div class="wrap">
+    <p class="eyebrow reveal">About</p>
+    <h2 class="reveal">Who I am</h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I'm a full stack developer based in Sri Lanka, with a BSc (Hons) in Engineering from the University of Moratuwa and a Master's in Enterprise Application Development from SLIIT.</p>
+        <p>Day to day I work in Java and Spring Boot on the server side, with React or Angular in the browser, MySQL and MongoDB behind them, and AWS to run it all. I've also shipped a good number of JavaFX desktop applications — point-of-sale systems, management systems and reporting tools built on JDBC, Hibernate and Jasper Reports.</p>
+        <p>Before software I worked as a materials and quality engineer across steel, cable and construction projects. That background still shows up in how I work: measure first, test properly, and don't ship what you haven't verified.</p>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><span class="ico">01</span><h4>Web applications</h4><p>Spring Boot REST services with React or Angular front ends, deployed on AWS.</p></div>
+        <div class="fact"><span class="ico">02</span><h4>Desktop applications</h4><p>JavaFX business applications — POS, inventory and management systems with Jasper reporting.</p></div>
+        <div class="fact"><span class="ico">03</span><h4>Machine learning</h4><p>Python and TensorFlow for machine learning and deep learning experiments.</p></div>
+        <div class="fact"><span class="ico">04</span><h4>Engineering roots</h4><p>Materials science, NDT testing and polymer technology; Arduino robotics and CNC machines.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <section class="colorlib-about" data-section="about">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
-                                <div class="col-md-12">
-                                    <div class="about-desc">
-                                        <span class="heading-meta">About Us</span>
-                                        <h2 class="colorlib-heading">Who Am I?</h2>
-                                        <p><strong>Hi I'm Danuka Malawana</strong> A dynamic, hardworking
-                                            ,self-motivated and result oriented BSc
-                                            (Hons)
-                                            Engineer who likes multi-tasking and has excellent team working skills and
-                                            willing to be a team member in a
-                                            successful and productive team.</p>
-                                        <!-- <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life
-                                            One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of
-                                            Grammar.</p> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
+<section id="skills">
+  <div class="wrap">
+    <p class="eyebrow reveal">Skills</p>
+    <h2 class="reveal">What I work with</h2>
+    <p class="lede reveal">The stack I reach for most, grouped by where it sits in a system.</p>
+    <div class="skill-grid">
+      <div class="skill-card reveal"><h3>Languages</h3><div class="tags">
+        <span class="tag">Java SE</span><span class="tag">Java EE</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">C</span><span class="tag">Visual Basic</span></div></div>
+      <div class="skill-card reveal"><h3>Backend</h3><div class="tags">
+        <span class="tag">Spring Boot</span><span class="tag">Spring Framework</span><span class="tag">Hibernate / JPA</span><span class="tag">JDBC</span><span class="tag">REST APIs</span><span class="tag">Node.js</span><span class="tag">Express</span></div></div>
+      <div class="skill-card reveal"><h3>Frontend</h3><div class="tags">
+        <span class="tag">React</span><span class="tag">Angular</span><span class="tag">JavaFX</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Angular Material</span><span class="tag">Bootstrap</span><span class="tag">jQuery</span></div></div>
+      <div class="skill-card reveal"><h3>Data</h3><div class="tags">
+        <span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">JSON</span><span class="tag">XML</span><span class="tag">Jasper Reports</span></div></div>
+      <div class="skill-card reveal"><h3>Cloud &amp; tooling</h3><div class="tags">
+        <span class="tag">AWS EC2</span><span class="tag">ECS / ECR</span><span class="tag">RDS</span><span class="tag">CloudFormation</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">IntelliJ IDEA</span></div></div>
+      <div class="skill-card reveal"><h3>Machine learning</h3><div class="tags">
+        <span class="tag">TensorFlow</span><span class="tag">Deep learning</span><span class="tag">Python</span></div></div>
+    </div>
+  </div>
+</section>
 
-                                <div class="col-md-3 animate-box" id="bx1" data-animate-effect="fadeInRight">
-                                    <div class="services color-2">
-                                        <span class="icon2"><img src="https://img.icons8.com/color/48/000000/globe.png"></span>
-                                        <h3><br> Web Application</h3>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 animate-box" id="bx2" data-animate-effect="fadeInTop">
-                                    <div class="services color-3">
-                                        <span class="icon2"><img
-                                                src="https://img.icons8.com/color/48/000000/laptop.png"></span>
-                                        <h3>Desktop Application <br> <br></h3>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 animate-box" id="bx3" data-animate-effect="fadeInBottom">
-                                    <div class="services color-4">
-                                        <span class="icon2"><img
-                                                src="https://img.icons8.com/color/48/000000/microscope.png"></span>
-                                        <h3>Materials Science Engineering</h3>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 animate-box" id="bx4" data-animate-effect="fadeInLeft">
-                                    <div class="services color-1">
-                                        <span class="icon2"><img
-                                                src="https://img.icons8.com/color/48/000000/robot-2.png"></span>
-                                        <h3><br> Robotics</h3>
-                                    </div>
-                                </div>
-                            </div>
+<section id="experience">
+  <div class="wrap">
+    <p class="eyebrow reveal">Experience</p>
+    <h2 class="reveal">Where I've worked</h2>
+    <div class="timeline">
+      <div class="tl-item now reveal">
+        <div class="tl-date">Sep 2020 — Present</div>
+        <h3>Software Engineer — Full Stack Developer</h3>
+        <div class="tl-org">Acentura (Pvt) Ltd</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Apr 2019 — Sep 2020</div>
+        <h3>Software Engineer — Full Stack Developer</h3>
+        <div class="tl-org">hSenid Lanka (Pvt) Ltd</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Sep 2018 — Apr 2019</div>
+        <h3>Full Stack Developer</h3>
+        <div class="tl-org">IJSE — Institute of Software Engineering</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Jan 2018 — Sep 2018</div>
+        <h3>Quality Assurance &amp; Quality Control Engineer</h3>
+        <div class="tl-org">Access Engineering PLC</div>
+        <div class="tl-note">Waterfront Integrated Resort — building construction project.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Aug 2016 — Jan 2018</div>
+        <h3>Quality Assurance Engineer</h3>
+        <div class="tl-org">Ceylon Steel Corporation Limited</div>
+        <div class="tl-note">Steel products manufacturing.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Aug 2014</div>
+        <h3>Trainee Materials Engineer</h3>
+        <div class="tl-org">Kamal Cables (Pvt) Ltd</div>
+        <div class="tl-note">Cable manufacturing factory.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Apr 2014</div>
+        <h3>Tutor — Physics &amp; Mathematics</h3>
+        <div class="tl-org">Physics, Pure Mathematics and Applied Mathematics</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-                        </div>
-                    </div>
-                </div>
-            </section>
+<section id="projects">
+  <div class="wrap">
+    <p class="eyebrow reveal">Work</p>
+    <h2 class="reveal">Selected projects</h2>
+    <p class="lede reveal">Web and desktop applications built with Java, Spring, JavaFX and modern JavaScript.</p>
+    <div class="filters reveal">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="web">Web</button>
+      <button class="filter" data-filter="desktop">Desktop</button>
+    </div>
+    <div class="proj-grid" id="projects-grid">
+      <article class="proj reveal" data-kind="web">
+        <div class="proj-top"><span class="proj-kind">Web</span><span class="proj-num">01</span></div>
+        <h3>Kitcut PCB Store</h3>
+        <p>E-commerce web application for PCB components — catalogue, cart and order flow on a Spring Boot REST backend with a React front end.</p>
+        <div class="tags"><span class="tag">Java 11</span><span class="tag">Spring Boot</span><span class="tag">React</span><span class="tag">MySQL</span></div>
+      </article>
+      <article class="proj reveal" data-kind="web">
+        <div class="proj-top"><span class="proj-kind">Web</span><span class="proj-num">02</span></div>
+        <h3>SunShine Games</h3>
+        <p>Games portal web application with an Angular single-page front end talking to a Spring Boot service layer.</p>
+        <div class="tags"><span class="tag">Java 11</span><span class="tag">Spring Boot</span><span class="tag">Angular 8</span><span class="tag">MySQL</span></div>
+      </article>
+      <article class="proj reveal" data-kind="web">
+        <div class="proj-top"><span class="proj-kind">Web</span><span class="proj-num">03</span></div>
+        <h3>Online POS</h3>
+        <p>Browser-based point-of-sale — customer, item and order management over a Node/Express API with AJAX-driven screens.</p>
+        <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">AJAX</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+      </article>
+      <article class="proj reveal" data-kind="web">
+        <div class="proj-top"><span class="proj-kind">Web</span><span class="proj-num">04</span></div>
+        <h3>Task Manager</h3>
+        <p>To-do and task tracking app with a REST backend, JSON persistence in MySQL and printable Jasper reports.</p>
+        <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MySQL</span><span class="tag">Jasper Reports</span></div>
+      </article>
+      <article class="proj reveal" data-kind="desktop">
+        <div class="proj-top"><span class="proj-kind">Desktop</span><span class="proj-num">05</span></div>
+        <h3>Spring POS</h3>
+        <p>Point-of-sale desktop application built on the Spring Framework with JPA persistence and a JavaFX interface.</p>
+        <div class="tags"><span class="tag">Spring</span><span class="tag">JPA</span><span class="tag">JavaFX</span><span class="tag">MySQL</span></div>
+      </article>
+      <article class="proj reveal" data-kind="desktop">
+        <div class="proj-top"><span class="proj-kind">Desktop</span><span class="proj-num">06</span></div>
+        <h3>Hibernate POS</h3>
+        <p>The same domain rebuilt on native Hibernate and JPA, with layered MVC architecture and Jasper reporting.</p>
+        <div class="tags"><span class="tag">Hibernate</span><span class="tag">JPA</span><span class="tag">JavaFX</span><span class="tag">Jasper Reports</span></div>
+      </article>
+      <article class="proj reveal" data-kind="desktop">
+        <div class="proj-top"><span class="proj-kind">Desktop</span><span class="proj-num">07</span></div>
+        <h3>Student Management System</h3>
+        <p>Registration, course, batch and student management for an institute, with JDBC persistence and printed reports.</p>
+        <div class="tags"><span class="tag">Java SE 8</span><span class="tag">JavaFX</span><span class="tag">MVC</span><span class="tag">JDBC</span><span class="tag">MySQL</span></div>
+      </article>
+      <article class="proj reveal" data-kind="desktop">
+        <div class="proj-top"><span class="proj-kind">Desktop</span><span class="proj-num">08</span></div>
+        <h3>Criminal Finding System</h3>
+        <p>Records and search application for case data, built on a JDBC data layer with report generation.</p>
+        <div class="tags"><span class="tag">Java SE 8</span><span class="tag">JavaFX</span><span class="tag">JDBC</span><span class="tag">MySQL</span></div>
+      </article>
+      <article class="proj reveal" data-kind="desktop">
+        <div class="proj-top"><span class="proj-kind">Desktop</span><span class="proj-num">09</span></div>
+        <h3>In-Memory Order System</h3>
+        <p>Place-order system with an in-memory data layer — an exercise in clean layering and application architecture.</p>
+        <div class="tags"><span class="tag">Java SE 8</span><span class="tag">JavaFX</span><span class="tag">Scene Builder</span></div>
+      </article>
+    </div>
+  </div>
+</section>
 
+<section id="education">
+  <div class="wrap">
+    <p class="eyebrow reveal">Education</p>
+    <h2 class="reveal">Studies</h2>
+    <div class="edu-grid">
+      <div class="edu reveal">
+        <div class="tl-date">Postgraduate</div>
+        <h3>MSc in Enterprise Application Development</h3>
+        <p>Faculty of Computing, SLIIT — Sri Lanka</p>
+      </div>
+      <div class="edu reveal">
+        <div class="tl-date">Undergraduate</div>
+        <h3>BSc (Hons) in Engineering</h3>
+        <p>Department of Materials Science &amp; Engineering, Faculty of Engineering, University of Moratuwa</p>
+        <ul>
+          <li>Polymer science, technology and process engineering</li>
+          <li>Metals, alloys, forming and extraction</li>
+          <li>Failure analysis and non-destructive testing</li>
+          <li>Control systems, instrumentation and machine design</li>
+        </ul>
+      </div>
+      <div class="edu reveal">
+        <div class="tl-date">Diploma</div>
+        <h3>Computer Hardware Engineering</h3>
+        <p>Raytronics Computer Systems (Pvt) Ltd</p>
+      </div>
+      <div class="edu reveal">
+        <div class="tl-date">GCE Advanced Level</div>
+        <h3>Physical Science Stream</h3>
+        <p>Mahanama College, Colombo</p>
+        <ul>
+          <li>Combined Mathematics — A</li>
+          <li>Physics — A</li>
+          <li>Chemistry — B</li>
+          <li>Z-score 2.06</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <section class="colorlib-services" data-section="services">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                             data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">What I do?</span>
-                            <h2 class="colorlib-heading">Here are some of my expertise</h2>
-                        </div>
-                    </div>
-                    <div class="row row-pt-md">
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's build something.</h2>
+      <p class="lede">Happy to talk about full stack work, a project you're planning, or anything Java and JavaScript. Email is the fastest way to reach me.</p>
+      <div class="contact-links">
+        <a class="clink" href="mailto:danukaem@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <span><small>Email</small>danukaem@gmail.com</span>
+        </a>
+        <a class="clink" href="tel:+94770317371">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <span><small>Phone</small>+94 77 031 7371</span>
+        </a>
+        <a class="clink" href="https://github.com/danukaem" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3.1-.3 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8a5 5 0 0 0-.1-3.7s-1.2-.4-4 1.5a13.4 13.4 0 0 0-7 0C6.1.7 4.9 1.1 4.9 1.1A5 5 0 0 0 4.8 4.8 5.4 5.4 0 0 0 3.3 8.5c0 5.5 3.3 6.7 6.4 7a3.4 3.4 0 0 0-1 2.6V22"/></svg>
+          <span><small>GitHub</small>github.com/danukaem</span>
+        </a>
+        <a class="clink" href="https://www.hackerrank.com/profile/danukaem" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 18-6-6 6-6"/><path d="m16 6 6 6-6 6"/></svg>
+          <span><small>HackerRank</small>hackerrank.com/danukaem</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-                        <div class="col-md-4 text-center animate-box">
-                            <div class="services color-2 set-height-div">
-									<span class="icon">
-										<i class="icon-data"></i>
-									</span>
-                                <div class="desc">
-                                    <h3>DeskTop Application</h3>
-                                    <p>java based applications <br> <br></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center animate-box">
-                            <div class="services color-3 set-height-div">
-									<span class="icon">
-										<i class="icon-phone3"></i>
-									</span>
-                                <div class="desc">
-                                    <h3>Web Application</h3>
-                                    <p>Javascript based application,websites,online web apps <br></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center animate-box">
-                            <div class="services color-4 set-height-div">
-									<span class="icon">
-										<i class="icon-layers2"></i>
-									</span>
-                                <div class="desc">
-                                    <h3>Materials Science Engineering</h3>
-                                    <p>Metals and alloys,ndt testing,polymer technology</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center animate-box">
-                            <div class="services color-5 set-height-div">
-									<span class="icon">
-										<i class="icon-data"></i>
-									</span>
-                                <div class="desc">
-                                    <h3>Robotics</h3>
-                                    <p>Arduino based robotics, cnc machines</p>
-                                </div>
-                            </div>
-                        </div>
+</main>
 
-                        <div class="col-md-4 text-center animate-box">
-                            <div class="services color-1 set-height-div">
-									<span class="icon">
-										<i class="icon-bulb"></i>
-									</span>
-                                <div class="desc">
-                                    <h3>Innovative Ideas</h3>
-                                    <p>Fresh Innovative ideas</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr">2026</span> Danuka Malawana</span>
+    <span>Built with plain HTML, CSS and JavaScript · <a href="https://github.com/danukaem/personal-website" target="_blank" rel="noopener">Source</a></span>
+  </div>
+</footer>
 
-            <div id="colorlib-counter" class="colorlib-counters" style="background-image: url(images/background2.jpg);"
-                 data-stellar-background-ratio="0.5">
-                <div class="overlay"></div>
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 text-center animate-box">
-                            <span class="colorlib-counter js-counter" data-from="0" data-to="124" data-speed="5000"
-                                  data-refresh-interval="50"></span>
-                            <span class="colorlib-counter-label">Cups of coffee</span>
-                        </div>
-                        <div class="col-md-3 text-center animate-box">
-                            <span class="colorlib-counter js-counter" data-from="0" data-to="12" data-speed="5000"
-                                  data-refresh-interval="50"></span>
-                            <span class="colorlib-counter-label">Projects</span>
-                        </div>
-                        <div class="col-md-3 text-center animate-box">
-                            <span class="colorlib-counter js-counter" data-from="0" data-to="3" data-speed="5000"
-                                  data-refresh-interval="50"></span>
-                            <span class="colorlib-counter-label">Clients</span>
-                        </div>
-                        <div class="col-md-3 text-center animate-box">
-                            <span class="colorlib-counter js-counter" data-from="0" data-to="6" data-speed="5000"
-                                  data-refresh-interval="50"></span>
-                            <span class="colorlib-counter-label">Partners</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<a href="#top" class="top" id="toTop" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</a>
 
-            <section class="colorlib-skills" data-section="skills">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                             data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">My Specialty</span>
-                            <h2 class="colorlib-heading animate-box">My Skills</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-                            <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and
-                                devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into
-                                the belt and made herself on the way.</p>
-                        </div> -->
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="progress-wrap">
-                                <h3>JavaScript</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="85"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>85%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>JAVA SE</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="88"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>88%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>JAVA EE</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="88"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>88%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>JAVA FX</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="85"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>85%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Hibernate</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Spring Boot</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Spring Framework</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Angular</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>React js</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Cascading Style Sheets (CSS)</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>HTML5 </h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="84"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>84%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Angular Material</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="progress-wrap">
-                                <h3>jQuery</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="85"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>85%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="progress-wrap">
-                                <h3>jQuery UI</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="75"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>75%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>AWS- EC2, cloud formation, ECR ,ECS, RDB,etc</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="progress-wrap">
-                                <h3>MySQL</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="74"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>74%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Java Database Connectivity (JDBC)</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="80"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>80%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>MongoDB</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Bootstrap</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="72"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>72%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Python</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Machine Learning/ AI/ Deep learning</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Tensorflow</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>JSON</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="82"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>82%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Node.js</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="75"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>75%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>XML</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="75"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>75%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<script>
+(function(){
+  var header=document.getElementById('site-header');
+  var toTop=document.getElementById('toTop');
+  var burger=document.getElementById('burger');
+  var menu=document.getElementById('menu');
+  var links=[].slice.call(menu.querySelectorAll('a[href^="#"]'));
 
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>TypeScript</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="84"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>84%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Jasper Reports</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="70"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>70%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>Visual Basic</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="85"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>85%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>C (Programming Language)</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="80"
-                                         aria-valuemin="0" aria-valuemax="100"
-                                         style="width:100%">
-                                        <!-- <span>80%</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  function onScroll(){
+    var y=window.scrollY;
+    header.classList.toggle('stuck',y>20);
+    toTop.classList.toggle('show',y>700);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-                    </div>
-                </div>
-            </section>
+  burger.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    burger.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open);
+  });
+  links.forEach(function(a){a.addEventListener('click',function(){
+    menu.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');
+  });});
 
-            <section class="colorlib-education" data-section="education">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                             data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">Education</span>
-                            <h2 class="colorlib-heading animate-box">Education</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="fancy-collapse-panel">
-                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                    <!-- <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingOne">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Master
-                                                    Degree Graphic Design
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                                                            the blind texts. </p>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingTwo">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                                   href="#collapseTwo" aria-expanded="false"
-                                                   aria-controls="collapseTwo"><img
-                                                        src="https://img.icons8.com/color/48/000000/graduation-cap.png">
-                                                    B.Sc(Hons) In Engineering
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                                             aria-labelledby="headingTwo">
-                                            <div class="panel-body">
-                                                <p>
-                                                    <!-- <strong>Department Of Materials Science Engineering</strong> <br> -->
-                                                    <strong>Faculty Of Engineering</strong> <br>
-                                                    <strong> University Of Moratuwa</strong>
-                                                    <br><strong>Sri Lanka</strong> <br>
-                                                </p>
-                                                <!-- <ul>
-                                                    <li>Basic Electronics</li>
-                                                    <li>Applied Electronics</li>
-                                                    <li>Applied Electricity</li>
-                                                    <li>Electrical engineering</li>
-                                                    <li>Methods of mathematics</li>
-                                                    <li>Mechanics</li>
-                                                    <li>Control systems and instrumentation</li>
-                                                    <li>Mechanics of machines</li>
-                                                    <li>Machine design</li>
-                                                    <li>Mechanics of materials</li>
-                                                    <li>Fundamentals of machine element design</li>
-                                                    <li>Mechanical behavior of materials</li>
-                                                    <li>Fluid mechanics</li>
-                                                    <li>Engineering drawing and computer aided modeling</li>
-                                                    <li>Basic engineering thermo dynamics</li>
-                                                    <li>Calculus</li>
-                                                    <li>Differential equation</li>
-                                                    <li>Linear algebra</li>
-                                                    <li>Applied statistics</li>
-                                                    <li>Numerical methods</li>
-                                                    <li>Polymer engineering</li>
-                                                    <li>Polymer science</li>
-                                                    <li>Polymer technology</li>
-                                                    <li>Industrial polymer process engineering</li>
-                                                    <li>Design and fabrication of polymer products</li>
-                                                    <li>Dies and moulds for polymer processing</li>
-                                                    <li>Polymer process control and instrumentation</li>
-                                                    <li>Metals and alloys</li>
-                                                    <li>Metal forming and machining</li>
-                                                    <li>Extraction of metals</li>
-                                                    <li>Properties of materials</li>
-                                                    <li>Principles of materials science and engineering</li>
-                                                    <li>SeparCharacterization of materialsated</li>
-                                                    <li>Electrical and magnetic properties of materials</li>
-                                                    <li>Degradation of materials</li>
-                                                    <li>Joining of materials</li>
-                                                    <li>Selection of materials</li>
-                                                    <li>Failure analysis and non-destructive testing</li>
-                                                    <li>Smart materials</li>
-                                                    <li>Nano materials</li>
-                                                    <li>Optical and electron microscopy</li>
-                                                    <li>Metal casting and powder metallurgy</li>
-                                                    <li>Ceramic science</li>
-                                                    <li>Advanced ceramics</li>
-                                                    <li>Composites</li>
-                                                </ul> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingFive">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                                   href="#collapseFive" aria-expanded="false"
-                                                   aria-controls="collapseFive"><img
-                                                        src="https://img.icons8.com/color/48/000000/graduation-cap.png">
-                                                    Masters in Enterprise and Application Development
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
-                                             aria-labelledby="headingFive">
-                                            <div class="panel-body">
-                                                <p>
-                                                    <!-- <strong>Department Of Materials Science Engineering</strong> <br> -->
-                                                    <strong>Faculty Of Computing</strong> <br>
-                                                    <strong>SLIIT Campus</strong>
-                                                    <br><strong>Sri Lanka</strong> <br>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingSix">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                                   href="#collapseSix" aria-expanded="false"
-                                                   aria-controls="collapseSix"><img
-                                                        src="https://img.icons8.com/color/48/000000/contract.png">
-                                                    Diploma In
-                                                    Computer Hardware Engineering
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel"
-                                             aria-labelledby="headingSix">
-                                            <div class="panel-body">
-                                                <p>Raytronics Computer Systems (Pvt) Ltd</p>
+  // scroll spy
+  var sections=[].slice.call(document.querySelectorAll('main section[id]'));
+  if('IntersectionObserver' in window){
+    var spy=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        links.forEach(function(a){
+          a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id && !a.classList.contains('nav-cta'));
+        });
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){spy.observe(s);});
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingThree">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
-                                                 aria-controls="collapseThree"><img src="https://img.icons8.com/color/48/000000/school-building.png"> Advanced Level
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                            <div class="panel-body">
-                                                <p><strong>Mahanama College</strong> <br> <strong>colombo 3</strong> <br><strong>Sri Lanka</strong></p>
-                                                <li>Combained Mathematics : A</li>
-                                                <li>Physics : A</li>
-                                                <li>Chemistry : B</li>
-                                                <li>Z Score : 2.06</li>
-                                            </div>
-                                        </div>
-                                    </div> -->
+    var rev=new IntersectionObserver(function(entries,o){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target);}
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    [].slice.call(document.querySelectorAll('.reveal')).forEach(function(el,i){
+      el.style.transitionDelay=(Math.min(i%6,5)*55)+'ms';
+      rev.observe(el);
+    });
+  } else {
+    [].slice.call(document.querySelectorAll('.reveal')).forEach(function(el){el.classList.add('in');});
+  }
 
-                                    <!-- <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingFour">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false"
-                                                 aria-controls="collapseFour"><img src="https://img.icons8.com/color/48/000000/school.png"> Ordinary Level
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                            <div class="panel-body">
-                                                <p><strong>Mahanama College</strong> <br> <strong>colombo 3</strong> <br><strong>Sri Lanka</strong></p>
-                                                <li>Mathematics : A</li>
-                                                <li>Science : B</li>
-                                                <li>Sinhala Language : B</li>
-                                                <li>Health : B</li>
-                                                <li>Dancing : A</li>
-                                                <li>Buddhism : A</li>
-                                                <li>Development Science : B</li>
-                                                <li>Electronics : A</li>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  // project filter
+  var filters=[].slice.call(document.querySelectorAll('.filter'));
+  var cards=[].slice.call(document.querySelectorAll('.proj'));
+  filters.forEach(function(b){
+    b.addEventListener('click',function(){
+      filters.forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      var f=b.dataset.filter;
+      cards.forEach(function(c){
+        var show=(f==='all'||c.dataset.kind===f);
+        c.style.display=show?'':'none';
+      });
+    });
+  });
 
-            <section class="colorlib-experience" data-section="experience">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                             data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">Experience</span>
-                            <h2 class="colorlib-heading animate-box">Work Experience</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="timeline-centered">
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-                                    <div class="timeline-entry-inner">
+  // pointer glow on project cards
+  cards.forEach(function(c){
+    c.addEventListener('pointermove',function(e){
+      var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      c.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
 
-                                        <div class="timeline-icon color-1">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-
-                                        <div class="timeline-label">
-                                            <h2><a href="#">Software Engineer(Full Stack Developer) at Acentura PVT
-                                                LTD</a><br> <span>2020-SEPTEMBER</span></h2>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-                                    <div class="timeline-entry-inner">
-
-                                        <div class="timeline-icon color-1">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-
-                                        <div class="timeline-label">
-                                            <h2><a href="#">Software Engineer(Full Stack Developer) at Hsenid Lanka PVT
-                                                LTD</a><br> <span>2019-APRIL</span></h2>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-                                    <div class="timeline-entry-inner">
-
-                                        <div class="timeline-icon color-1">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-
-                                        <div class="timeline-label">
-                                            <h2><a href="#">Full Stack Developer at IJSE</a><br>
-                                                <span>2018-SEPTEMBER</span></h2>
-                                            <p>IJSE - Institute of Software Engineering</p>
-                                        </div>
-                                    </div>
-                                </article>
-
-
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon color-2">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-                                        <div class="timeline-label">
-                                            <h2><a href="#">Quality Assurance & Quality Control Engineer at Access
-                                                Engineering </a> <br> <span>2018-JANUARY
-													</span></h2>
-                                            <p>Water Front Intergraded resort Project
-                                                It's a building project
-                                            </p>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon color-3">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-                                        <div class="timeline-label">
-                                            <h2><a href="#">Quality Assurance Engineer at Ceylon Steel Corporation
-                                                Limited</a><br> <span>2016-AUGUST</span></h2>
-                                            <p>It's a Steel Products manufacturing Factory</p>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInTop">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon color-4">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-                                        <div class="timeline-label">
-                                            <h2><a href="#">Trainee Material Engineer in KAMAL CABLES (PVT)LTD</a> <br>
-                                                <span> 2014-AUGUST</span></h2>
-                                            <p>It's a cable Manufacturing Facory</p>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon color-5">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-                                        <div class="timeline-label">
-                                            <h2><a href="#">Tutor</a> <br> <span>2014 APRIL</span></h2>
-                                            <p>I am a Physics , Pure Mathematics and Applied Mathematics tutor </p>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon color-none">
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="colorlib-work" data-section="work">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                             data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">My Work</span>
-                            <h2 class="colorlib-heading animate-box">PROJECTS</h2>
-                        </div>
-                    </div>
-                    <!-- <div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
-                        <div class="col-md-12">
-                            <p class="work-menu">
-                                <span><a href="#" class="active">Java</a></span>
-                                <span><a href="#">JavaScript</a></span>
-                                <span><a href="#">Software</a></span> <span><a href="#">Apps</a></span>
-                            </p>
-                        </div>
-                    </div> -->
-                    <div class="row">
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="project" style="background-image: url(images/img-5.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Kitcut PCB shopping Web Application</a></h3>
-                                        <!-- <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span> -->
-                                        <!-- <span class="badge badge-success">JAvaFX</span> -->
-
-
-                                        <span class="badge badge-blue">Java 11</span>
-                                        <span class="badge badge-blue">Spring Boot</span>
-                                        <span class="badge badge-blue">React JS</span>
-                                        <span class="badge badge-blue">Intellij IDEA</span>
-
-                                        <!-- <span>Website</span> -->
-                                        <!-- <p class="icon">
-                                            <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="project" style="background-image: url(images/img-5.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">SunShine Games web Application</a></h3>
-                                        <!-- <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span> -->
-                                        <!-- <span class="badge badge-success">JAvaFX</span> -->
-
-
-                                        <span class="badge badge-blue">Java 11</span>
-                                        <span class="badge badge-blue">Spring Boot</span>
-                                        <span class="badge badge-blue">Angular 8</span>
-                                        <span class="badge badge-blue">Intellij IDEA</span>
-
-                                        <!-- <span>Website</span> -->
-                                        <!-- <p class="icon">
-                                            <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="project" style="background-image: url(img/inmemoryPOS/4.png);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">InMemory Place Order System</a></h3>
-                                        <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                        <!-- <span class="badge badge-success">JAvaFX</span> -->
-
-
-                                        <span class="badge badge-blue">Java SE 8</span>
-                                        <span class="badge badge-blue">Java FX</span>
-                                        <span class="badge badge-blue">Scene Builder</span>
-                                        <span class="badge badge-blue">Intellij IDEA</span>
-
-                                        <!-- <span>Website</span> -->
-                                        <!-- <p class="icon">
-                                            <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="project" style="background-image: url(images/img-2.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">TODO List</a></h3>
-                                        <span><a href="https://github.com/danukaem/todolist"><img
-                                                src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                        <!-- <div class="col-12 col-md-5"> -->
-
-                                        <span class="badge badge-blue">HTML5</span>
-                                        <span class="badge badge-blue">CSS3</span>
-                                        <span class="badge badge-blue">JavaScript</span>
-                                        <span class="badge badge-blue">NodeJS</span>
-                                        <span class="badge badge-blue">ExpressJS</span>
-                                        <span class="badge badge-blue">AJAX</span>
-                                        <span class="badge badge-blue">Bootstrap</span>
-                                        <span class="badge badge-blue">JSON</span>
-                                        <span class="badge badge-blue">MySQL</span>
-                                        <span class="badge badge-blue">Jasper Studio</span>
-                                        <span class="badge badge-blue">Jasper Reports</span>
-                                        <span class="badge badge-blue">IntelliJ IDEA</span>
-
-                                        <!-- </div> -->
-                                        <!-- <span>Animation</span>
-                                        <p class="icon">
-                                            <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInTop">
-                            <div class="project" style="background-image: url(img/studentManagementSys/1.png);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">DBMS Student Management System</a></h3>
-                                        <span><a href="https://github.com/danukaem/DBMS-Student-Management-System"><img
-                                                src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                        <span class="badge badge-blue">Java SE 8</span>
-                                        <span class="badge badge-blue">Java FX</span>
-                                        <span class="badge badge-blue">MVC</span>
-                                        <span class="badge badge-blue">JDBC</span>
-                                        <span class="badge badge-blue">MySQL</span>
-                                        <span class="badge badge-blue">Scene Builder</span>
-                                        <span class="badge badge-blue">Intellij IDEA</span>
-                                        <span class="badge badge-blue">Jasper Studio</span>
-                                        <span class="badge badge-blue">Jasper Reports</span>
-                                        <!-- <span>Illustration</span>
-                                        <p class="icon">
-                                            <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInBottom">
-                            <div class="project" style="background-image: url(img/criminalFindingSys/5.png);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Criminal Finding System</a></h3>
-                                        <!-- <span>Application</span> -->
-                                        <!-- <p class="icon"> -->
-                                        <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                        <span class="badge badge-blue">Java SE 8</span>
-                                        <span class="badge badge-blue">Java FX
-												</span>
-                                        <span class="badge badge-blue">MVC</span>
-                                        <span class="badge badge-blue">JDBC</span>
-                                        <span class="badge badge-blue">MySQL</span>
-                                        <span class="badge badge-blue">Scene Builder</span>
-                                        <span class="badge badge-blue">Intellij IDEA</span>
-                                        <span class="badge badge-blue">Jasper Studio</span>
-                                        <span class="badge badge-blue">Jasper Reports</span>
-
-
-                                        <!-- <span><a href="#"><i class="icon-eye"></i> 100</a></span> -->
-                                        <!-- <span><a href="#"><i class="icon-heart"></i> 49</a></span> -->
-                                        <!-- </p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="project" style="background-image: url(images/img-5.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Hibernate POS</a></h3>
-                                        <span><a href="https://github.com/danukaem/hibernate-POS"><img
-                                                src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                        <span class="badge badge-blue">Java FX</span>
-                                        <span class="badge badge-blue">MVC</span>
-                                        <span class="badge badge-blue">JDBC</span>
-                                        <span class="badge badge-blue">MySQL</span>
-                                        <span class="badge badge-blue">Scene Builder</span>
-                                        <span class="badge badge-blue">Intellij IDEA</span>
-                                        <span class="badge badge-blue">Jasper Studio</span>
-                                        <span class="badge badge-blue">Jasper Reports</span>
-                                        <span class="badge badge-blue">Native Hibernate+JPA</span>
-                                        <!-- <span>Graphic, Logo</span>
-                                        <p class="icon">
-                                            <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="project" style="background-image: url(images/img-5.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Spring POS</a></h3>
-                                        <span><a href="https://github.com/danukaem/hibernate-POS"><img
-                                                src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                        <span class="badge badge-blue">Java FX</span>
-                                        <span class="badge badge-blue">MVC</span>
-                                        <span class="badge badge-blue">JDBC</span>
-                                        <span class="badge badge-blue">MySQL</span>
-                                        <span class="badge badge-blue">Scene Builder</span>
-                                        <span class="badge badge-blue">Intellij IDEA</span>
-                                        <span class="badge badge-blue">Jasper Studio</span>
-                                        <span class="badge badge-blue">Jasper Reports</span>
-                                        <span class="badge badge-blue">Spring+JPA</span>
-                                        <!-- <span>Graphic, Logo</span>
-                                        <p class="icon">
-                                            <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="project" style="background-image: url(images/img-6.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Online POS</a></h3>
-                                        <span><a href="https://github.com/danukaem/online-POS-System"><img
-                                                src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                        <span class="badge badge-blue">HTML5</span>
-                                        <span class="badge badge-blue">CSS3</span>
-                                        <span class="badge badge-blue">JavaScript</span>
-                                        <span class="badge badge-blue">NodeJS</span>
-                                        <span class="badge badge-blue">ExpressJS</span>
-                                        <span class="badge badge-blue">AJAX</span>
-                                        <span class="badge badge-blue">Bootstrap</span>
-                                        <span class="badge badge-blue">JSON</span>
-                                        <span class="badge badge-blue">MySQL</span>
-                                        <span class="badge badge-blue">IntelliJ IDEA</span>
-
-                                        <!-- <span>Web Design</span>
-                                        <p class="icon">
-                                            <span><a href="#"><img src="https://img.icons8.com/color/48/000000/github.png"></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 animate-box">
-                            <p><a href="#" class="btn btn-primary btn-lg btn-load-more">Load more <i
-                                    class="icon-reload"></i></a></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- <section class="colorlib-blog" data-section="blog">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">Read</span>
-                            <h2 class="colorlib-heading">Recent Blog</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="blog-entry">
-                                <a href="blog.html" class="blog-img"><img src="images/blog-1.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
-                                <div class="desc">
-                                    <span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
-                                    <h3><a href="blog.html">Renovating National Gallery</a></h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="blog-entry">
-                                <a href="blog.html" class="blog-img"><img src="images/blog-2.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
-                                <div class="desc">
-                                    <span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
-                                    <h3><a href="blog.html">Wordpress for a Beginner</a></h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="blog-entry">
-                                <a href="blog.html" class="blog-img"><img src="images/blog-3.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
-                                <div class="desc">
-                                    <span><small>April 14, 2018 </small> | <small> Inspiration </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
-                                    <h3><a href="blog.html">Make website from scratch</a></h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 animate-box">
-                            <p><a href="#" class="btn btn-primary btn-lg btn-load-more">Load more <i class="icon-reload"></i></a></p>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
-
-            <section class="colorlib-contact" data-section="contact">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                             data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">Get in Touch</span>
-                            <h2 class="colorlib-heading">Contact</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="colorlib-feature colorlib-feature-sm animate-box"
-                                 data-animate-effect="fadeInLeft">
-                                <div class="colorlib-icon">
-                                    <img src="https://img.icons8.com/color/48/000000/email.png">
-                                </div>
-                                <div class="colorlib-text">
-                                    <p><a href="#">danukaem@gmail.com</a></p>
-                                </div>
-                            </div>
-                            <div class="colorlib-feature colorlib-feature-sm animate-box"
-                                 data-animate-effect="fadeInLeft">
-                                <div class="colorlib-icon">
-                                    <!-- <img src="https://img.icons8.com/color/48/000000/cell-phone.png"> -->
-                                    <img src="https://img.icons8.com/color/48/000000/phone.png">
-                                </div>
-                                <div class="colorlib-text">
-                                    <p><a href="tel://">+94770 317 371</a></p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-7 col-md-push-1">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box"
-                                     data-animate-effect="fadeInRight">
-                                    <form action="">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Subject">
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea name="" id="message" cols="30" rows="7" class="form-control"
-                                                      placeholder="Message"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" class="btn btn-primary btn-send-message"
-                                                   value="Send Message">
-                                        </div>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </div><!-- end:colorlib-main -->
-    </div><!-- end:container-wrap -->
-</div><!-- end:colorlib-page -->
-
-<!-- jQuery -->
-<script src="js/jquery.min.js"></script>
-<!-- jQuery Easing -->
-<script src="js/jquery.easing.1.3.js"></script>
-<!-- Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Waypoints -->
-<script src="js/jquery.waypoints.min.js"></script>
-<!-- Flexslider -->
-<script src="js/jquery.flexslider-min.js"></script>
-<!-- Owl carousel -->
-<script src="js/owl.carousel.min.js"></script>
-<!-- Counters -->
-<script src="js/jquery.countTo.js"></script>
-
-
-<!-- MAIN JS -->
-<script src="js/main.js"></script>
-
-
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
 </body>
-
 </html>

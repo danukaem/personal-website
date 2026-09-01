@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://danukaem.github.io/personal-website/sitemap.xml
